@@ -18,6 +18,9 @@
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2"
+    "@mdi/font": "^5.3.45",
+    "@mdi/js": "^5.3.45",
+    "@nuxtjs/vuetify": "^1.11.2",
+    "material-design-icons-iconfont": "^5.0.1"
   }
 }
