@@ -4,22 +4,22 @@
       <v-card
     class="mx-auto"
     max-width="400"
+    width="320"
   >
     <v-img
       class="white--text align-end"
       height="200px"
-      src="https://cdn.vuetifyjs.com/images/john.jpg"
+      :src="'/avatars/' + user.avatar"
     >
-      <v-card-title>John</v-card-title>
+      <v-card-title>{{user.name + ' ' + user.secondName}}</v-card-title>
     </v-img>
 
-    <v-card-subtitle class="pb-0">john@example.com</v-card-subtitle>
+    <v-card-subtitle class="pb-0">{{user.email}}</v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <div>Reading Book</div>
+      <div>{{user.birthdayDate}}</div>
 
-      <div>Russia, Kazan</div>
-      {{user}}
+      <div>{{user.country}}, {{user.city}}</div>
     </v-card-text>
   </v-card>
   </v-row>

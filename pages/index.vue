@@ -2,12 +2,14 @@
 <v-container style="height:100%"> 
   <v-row style="height:100%" align="center"  justify="center" >
     <v-col class="auth-wrapper" xl="4">
-      <v-form>
+      <v-form @submit.prevent="auth">
         <h1 class="auth-wrapper__heading">Авторизация</h1>
         <v-text-field
         v-model="login"
         @input="validateInputsOnEmpty"
         label="Логин"
+        ref="login-input"
+        :disabled="disabledInput"
         required
         ></v-text-field>
         <v-text-field
@@ -15,9 +17,11 @@
         @input="validateInputsOnEmpty"
         label="Пароль"
         type="password"
+        ref="pass-input"
+        :disabled="disabledInput"
         required
         ></v-text-field>
-        <v-btn @click="auth" @keypress.enter="auth" color="success" :disabled="isDisabled">Войти</v-btn>
+        <v-btn type="submit" @click="auth"  color="success" :disabled="isDisabled">Войти</v-btn>
       </v-form>
     </v-col>
   </v-row>
@@ -51,7 +55,8 @@ export default {
      login:'',
      isDisabled:true,
      snackbar:false,
-     textFromServer:''
+     textFromServer:'',
+     disabledInput:false,
    }
  },
   methods:{
@@ -63,6 +68,8 @@ export default {
     }
    },
    async auth(){
+     this.$refs['login-input'].blur()
+     this.$refs['pass-input'].blur()
     const {data} = await this.$store.dispatch('auth',{
        login:this.login,
        password:this.password
@@ -74,12 +81,15 @@ export default {
      this.textFromServer = data.message
      this.$store.commit('changeAuthStatus', isAuth)
      this.snackbar = true
+     this.disabledInput = true
      setTimeout(()=>{
        this.snackbar = false
        if(isAuth){
          this.$store.commit('changeAuthStatus',isAuth)
          this.$store.commit('setUser',data.user)
          this.$router.push('/profile')
+       }else{
+         this.disabledInput = false
        }
      },2000)
    }
