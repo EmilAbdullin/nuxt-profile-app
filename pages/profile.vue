@@ -19,6 +19,7 @@
       <div>Reading Book</div>
 
       <div>Russia, Kazan</div>
+      {{user}}
     </v-card-text>
   </v-card>
   </v-row>
@@ -26,10 +27,24 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex'
 
 export default {
- layout:'main'
+ layout:'main',
+ computed:{
+    ...mapGetters({
+      user:'user'
+    })
+ },
+ beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (vm.$store.getters.isAuth) {
+        next()
+      } else {
+        next('/')
+      }
+  })
+ }
 }
 </script>
 

@@ -5,6 +5,10 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
+ env: {
+  REQUEST_API_URL: process.env.REQUEST_API_URL || 'http://localhost:5555/'
+ },
+
   mode: 'universal',
   /*
   ** Nuxt target

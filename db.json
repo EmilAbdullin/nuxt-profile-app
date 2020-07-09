@@ -1,9 +1,11 @@
 {
     "users":[
         {
-            "login":"User",
-            "password":"123ABC",
-            "email":"example.com"
+            "id":1,
+            "login":"admin",
+            "password":"admin",
+            "email":"mail@example.com",
+            "avatar":"/static/avatars/ava.jpg"
         }
     ]
 }
