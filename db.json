@@ -1,9 +1,16 @@
 {
     "users":[
         {
-            "login":"User",
-            "password":"123ABC",
-            "email":"example.com"
+            "id":1,
+            "login":"admin",
+            "name":"Jhon",
+            "secondName":"Johnes",
+            "birthdayDate":"06/06/1996",
+            "country":"Russia",
+            "city":"Kazan",
+            "password":"admin",
+            "email":"mail@example.com",
+            "avatar":"ava.jpg"
         }
     ]
 }
